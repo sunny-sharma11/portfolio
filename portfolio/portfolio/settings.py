@@ -26,7 +26,7 @@ BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 SECRET_KEY = '1x1d!a3q14bk2wk29_^^sch6%!$)h6ci_zgoawp-sk7y1d10h+'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['personal-portfolio-django.herokuapp.com']
 
