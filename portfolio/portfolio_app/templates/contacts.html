@@ -1,0 +1,109 @@
+﻿{% extends "base.html" %}
+{% load static %}
+{% block portfolio-name %} Sunny Sharma {% endblock %}
+{% block title %} Works {% endblock %}
+		{% block content %}
+		
+		<!-- Wrapper -->
+		<div class="wrapper">
+
+			<!-- Section Started -->
+			<div class="section started layout-creative" id="section-started">
+
+				<!-- background -->
+				<div class="video-bg">
+					<div class="video-bg-mask"></div>
+					<div class="video-bg-texture" id="grained_container"></div>
+				</div>
+
+				<!-- started content -->
+				<div class="centrize full-width">
+					<div class="vertical-center">
+						<div class="started-content">
+							<h1 class="h-title">Contacts</h1>
+							<div class="h-subtitles">
+								<div class="h-subtitle typing-bread">
+									<p class="breadcrumbs">
+										<a href="/">Home</a> / Contacts
+									</p>
+								</div>
+								<span class="typed-bread"></span>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- mosue button -->
+				<a href="#" class="mouse_btn" style="display: none;"><span class="icon fas fa-chevron-down"></span></a>
+
+			</div>
+
+			<!-- Section Contacts Info -->
+			<div class="section contacts" id="section-contacts-info">
+				<div class="content">
+
+					<!-- title -->
+					<div class="title">
+						<div class="title_inner">Contacts Info</div>
+					</div>
+
+					<!-- contacts items -->
+					<div class="service-items">
+
+                        {% for detail in detail%}
+						<div class="service-col">
+							<div class="service-item content-box">
+								<div class="icon"><span class="{{detail.icon}}"></span></div>
+								<div class="name">{{detail.heading}}</div>
+								<div class="text">{{detail.desc}}</div>
+							</div>
+						</div>
+						{% endfor %}
+
+
+					</div>
+
+					<div class="clear"></div>
+				</div>
+			</div>
+
+			<!-- Section Contacts Form -->
+			<div class="section contacts" id="section-contacts">
+				<div class="content">
+
+					<!-- title -->
+					<div class="title">
+						<div class="title_inner">Contacts Form</div>
+					</div>
+
+					<!-- form -->
+					<div class="contact_form content-box">
+						<form id="cform" method="POST" action="">
+							{% csrf_token %}
+							<div class="group-val">
+   								<input type="text" name="name" id="name" placeholder="Name">
+							</div>
+							<div class="group-val">
+								<input type="email" name="email" id="email" placeholder="Email">
+							</div>
+							<div class="group-val ct-gr">
+								<textarea name="message" id="message" placeholder="Message"></textarea>
+							</div>
+							<div class="group-bts">
+								<button type="submit" class="btn hover-animated">
+									<span class="circle"></span>
+									<span class="lnk">Send Message</span>
+								</button>
+							</div>
+						</form>
+						<div class="alert-success">
+							<p>Thanks, your message is sent successfully.</p>
+						</div>
+					</div>
+
+				</div>
+				<div class="clear"></div>
+			</div>
+
+		</div>
+	{% endblock %}

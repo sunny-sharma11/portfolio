@@ -1,0 +1,365 @@
+﻿{% extends "base.html" %}
+{% load static %}
+{% block portfolio-name %} Sunny Sharma {% endblock %}
+{% block title %} Resume {% endblock %}
+		{% block content %}
+		<!-- Wrapper -->
+		<div class="wrapper">
+
+			<!-- Section Started -->
+			<div class="section started layout-creative" id="section-started">
+
+				<!-- background -->
+				<div class="video-bg">
+					<div class="video-bg-mask"></div>
+					<div class="video-bg-texture" id="grained_container"></div>
+				</div>
+
+				<!-- started content -->
+				<div class="centrize full-width">
+					<div class="vertical-center">
+						<div class="started-content">
+							<h1 class="h-title">Resume</h1>
+							<div class="h-subtitles">
+								<div class="h-subtitle typing-bread">
+									<p class="breadcrumbs">
+										<a href="/">Home</a> / Resume
+									</p>
+								</div>
+								<span class="typed-bread"></span>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- mosue button -->
+				<a href="#" class="mouse_btn" style="display: none;"><span class="icon fas fa-chevron-down"></span></a>
+
+			</div>
+
+			<!-- Section About -->
+			<div class="section about" id="section-about">
+				<div class="content content-box">
+				{% for res_intro in res_intro %}
+					<!-- image -->
+					<div class="image">
+						<img src="{{res_intro.profile_img.url}}" alt="">
+					</div>
+
+					<!-- desc -->
+					<div class="desc">
+						<p>{{res_intro.desc}}</p>
+						<div class="info-list">
+							<ul>
+								<li><strong>Age:</strong> 24</li>
+								<li><strong>Residence:</strong> {{res_intro.residence}}</li>
+								<li><strong>Freelance:</strong> {{res_intro.freelance}}</li>
+								<li><strong>Address:</strong> {{res_intro.address}}</li>
+								<li><strong>Phone:</strong> {{res_intro.phone}}</li>
+								<li><strong>E-mail:</strong> {{res_intro.email}}</li>
+							</ul>
+						</div>
+						<div class="bts">
+							<a href="{{res_intro.resume.url}}" class="btn hover-animated">
+								<span class="circle"></span>
+								<span class="lnk">Download CV</span>
+							</a>
+						</div>
+					</div>
+
+					<div class="clear"></div>
+				{% endfor %}
+				</div>
+			</div>
+
+			<!-- Section Service -->
+			<div class="section service" id="section-services">
+				<div class="content">
+
+					<!-- title -->
+					<div class="title">
+						<div class="title_inner">Services</div>
+					</div>
+
+					<!-- service items -->
+					<div class="service-items">
+						{% for res_ser in res_ser %}
+						<div class="service-col">
+							<div class="service-item content-box">
+								<div class="icon"><span class="{{res_ser.icon}}"></span></div>
+								<div class="name">{{res_ser.heading}}</div>
+								<div class="text">{{res_ser.desc}}</div>
+							</div>
+						</div>
+						{% endfor %}
+
+					</div>
+
+					<div class="clear"></div>
+				</div>
+			</div>
+
+				<!-- Section Resume -->
+			<div class="section resume" id="section-history">
+				<div class="content">
+					<div class="cols">
+
+						<div class="col col-md">
+
+							<!-- title -->
+							<div class="title">
+								<div class="title_inner">Experience</div>
+							</div>
+							
+							<!-- resume items -->
+							<div class="resume-items">
+								{% for res_exp in res_exp %}
+								<div class="resume-item content-box active">
+									<div class="date">{{res_exp.from_date}} - {% if res_exp.present == True %}Present{% else %}{{res_exp.to_date}}{% endif %}</div>
+									<div class="name">{{res_exp.designation}} - {{res_exp.company}}</div>
+									<div class="text">{{res_exp.role_and_responsibility}}</div>
+								</div>
+								{% endfor %}
+
+							</div>
+
+						</div>
+						
+						<div class="col col-md">
+
+							<!-- title -->
+							<div class="title">
+								<div class="title_inner">Education</div>
+							</div>
+							
+							<!-- resume items -->
+							<div class="resume-items">
+
+								{% for res_edu in res_edu%}
+								<div class="resume-item content-box">
+									<div class="date">{{res_edu.from_date}} - {{res_edu.to_date}}</div>
+									<div class="name">{{res_edu.institute}} - {{res_edu.city}}<span><br> Score - {{res_edu.score}}%</span></div>
+									<div class="text">{{res_edu.specialization}}</div>
+								</div>
+								{% endfor %}
+
+
+
+
+							</div>
+						</div>
+
+
+					</div>
+				</div>
+			</div>
+
+
+			<!-- Section Languages Skills -->
+			<div class="section skills" id="section-skills-lang">
+				<div class="content">
+
+					<!-- title -->
+					<div class="title">
+						<div class="title_inner">Languages Skills</div>
+					</div>
+
+					<!-- skills items -->
+					<div class="skills dotted content-box">
+						<ul>
+							{% for res_lan in res_lan%}
+							<li> 
+								<div class="name">{{res_lan.language}}</div>
+								<div class="progress">
+									<div class="percentage" style="width: {{res_lan.skill_rating}}0%;">
+										<span class="percent">{{res_lan.skill_rating}}0%</span>
+									</div>
+								</div>
+							</li>
+							{% endfor %}
+
+						</ul>
+					</div>
+				</div>
+
+			</div>
+
+			<!-- Section Coding Skills -->
+			<div class="section skills" id="section-skills-code">
+				<div class="content">
+					
+					<!-- title -->
+					<div class="title">
+						<div class="title_inner">Coding Skills</div>
+					</div>
+
+					<!-- skills items -->
+					<div class="skills circles content-box">
+						<ul>
+                         {% for res_skill in res_skill%}
+							<li> 
+								<div class="name">{{res_skill.skill}}</div>
+								<div class="progress p{{res_skill.skill_rating}}0"> <!-- p90 = 90% circle fill color -->
+									<div class="percentage">
+										<span class="percent">{{res_skill.skill_rating}}0%</span>
+									</div>
+									<span>{{res_skill.skill_rating}}0%</span>
+								</div>
+							</li>
+							{% endfor %}
+							</ul>
+					</div>
+
+				</div>
+			</div>
+
+			<!-- Section Knowladge Skills -->
+			<div class="section skills" id="section-skills-know">
+				<div class="content">
+
+					<!-- title -->
+					<div class="title">
+						<div class="title_inner">Knowledge</div>
+					</div>
+
+					<!-- skills -->
+					<div class="skills list content-box">
+						<ul>
+							{% for res_knw in res_knw%}
+							<li> 
+								<div class="name">{{res_knw.title}}</div>
+							</li>
+							{% endfor %}
+							</ul>
+					</div>
+
+				</div>
+			</div>
+
+			<!-- Section Interests -->
+			<div class="section service" id="section-interests">
+				<div class="content">
+
+					<!-- title -->
+					<div class="title">
+						<div class="title_inner">Interests</div>
+					</div>
+
+					<!-- interests items -->
+					<div class="service-items">
+                        {% for res_intr in res_intr%}
+						<div class="service-col">
+							<div class="service-item content-box">
+								<div class="icon"><span class="{{res_intr.icon}}"></span></div>
+								<div class="name">{{res_intr.heading}}</div>
+								<div class="text">{{res_intr.desc}}</div>
+							</div>
+						</div>
+                        {% endfor %}
+
+					</div>
+
+					<div class="clear"></div>
+				</div>
+			</div>
+
+
+			<!-- Section Testimonials -->
+			<div class="section testimonials" id="section-testimonials">
+				<div class="content">
+
+					<!-- title -->
+					<div class="title">
+						<div class="title_inner">Testimonials</div>
+					</div>
+
+					<!-- testimonials items -->
+					<div class="reviews-carousel">
+						<div class="swiper-container">
+							<div class="swiper-wrapper">
+                            {% for testi in testi%}
+								<div class="swiper-slide">
+									<div class="reviews-item content-box">
+										<div class="image">
+											<img src="{{testi.profile_img.url}}" alt="">
+										</div>
+										<div class="info">
+											<div class="name">{{testi.name}}</div>
+											<div class="company">{{testi.designation}}</div>
+										</div>
+										<div class="text">
+											{{testi.desc}}
+										</div>
+									</div>
+								</div>
+                              {% endfor %}
+
+							</div>
+						</div>
+
+						<!-- navigation -->
+						<div class="swiper-nav">
+							<a class="prev swiper-button-prev fas fa-long-arrow-alt-left"></a>
+							<a class="next swiper-button-next fas fa-long-arrow-alt-right"></a>
+						</div>
+
+					</div>
+					
+				</div>
+			</div>
+
+			<!-- Section Clients -->
+			<div class="section clients" id="section-clients">
+				<div class="content">
+
+					<!-- title -->
+					<div class="title">
+						<div class="title_inner">Clients</div>
+					</div>
+
+					<!-- clients items -->
+					<div class="content-box">
+						<div class="clients-items">
+                           {% for client in clients %}
+							<div class="clients-col">
+								<div class="clients-item">
+									<a target="_blank" href="#">
+										<img src="{{client.logos.url}}" alt="">
+									</a>
+								</div>
+							</div>
+                            {% endfor %}
+
+						</div>
+					</div>
+					
+					<div class="clear"></div>
+				</div>
+			</div>
+
+			<!-- Section Custom Text -->
+			<div class="section custom-text" id="section-custom-text">
+				<div class="content">
+
+					<!-- title -->
+					<div class="title">
+						<div class="title_inner">Custom Text</div>
+					</div>
+
+					<!-- clients items -->
+					<div class="content-box">
+						<div class="single-post-text">
+							{% for custom_text in custom_text %}
+							<p>
+								{{custom_text.desc}}
+							</p>
+							{% endfor %}
+						</div>
+					</div>
+					
+					<div class="clear"></div>
+				</div>
+			</div>
+
+		</div>
+		{% endblock %}

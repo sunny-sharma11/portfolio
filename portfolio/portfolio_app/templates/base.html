@@ -1,0 +1,155 @@
+{% load static %}
+<!doctype html>
+<html lang="en-US">
+<head>
+
+	<!-- Meta -->
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="description" content="CV & Resume Template">
+	<meta name="keywords" content="vcard, resposnive, resume, personal, card, cv, cvio, portfolio">
+	<meta name="author" content="beshleyua">
+
+	<!-- Title -->
+	<title>{% block title %} Title {% endblock %}</title>
+
+	<!-- Fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&display=swap&subset=cyrillic" rel="stylesheet">
+
+	<link rel="stylesheet" href="{% static 'css/min-styles.css' %}">
+	<link rel="stylesheet" href="{% static 'css/fontawesome.css' %}">
+	<link rel="stylesheet" href="{% static 'css/brands.css' %}">
+	<link rel="stylesheet" href="{% static 'css/solid.css' %}">
+
+	<!--[if lt IE 9]>
+	<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+
+	<link rel="shortcut icon" href="{% static 'images/favicons/favicon.ico' %}">
+
+
+
+</head>
+
+<body class="home">
+
+	<!-- Preloader -->
+	<div class="preloader">
+		<div class="centrize full-width">
+			<div class="vertical-center">
+				<div class="spinner">
+					<div class="double-bounce1"></div>
+					<div class="double-bounce2"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Container -->
+	<div class="container">
+
+		<!-- Cursor -->
+		<div class="cursor-follower"></div>
+
+		<!-- Header -->
+		<header class="header">
+			<div class="head-top">
+
+				<!-- menu button -->
+				<a href="#" class="menu-btn"><span></span></a>
+
+				<!-- logo -->
+				<div class="logo hover-masks-logo">
+
+					<a href={% for res_intro in res_intro %}{{res_intro.resume.url}}{% endfor  %}>
+						<span class="mask-lnk"><strong>{% block portfolio-name %} Name {% endblock %}</strong></span>
+						<span class="mask-lnk mask-lnk-hover">Download <strong>CV</strong></span>
+					</a>
+
+				</div>
+
+				<!-- top menu -->
+				<div class="top-menu hover-masks">
+					<div class="top-menu-nav">
+						<div class="menu-topmenu-container">
+							{% with request.resolver_match.url_name as url_name %}
+							<ul class="menu">
+
+								<li class="menu-item  {% if url_name == 'index' %}current-menu-item{% endif %}">
+									<a href="/">Home</a>
+
+								</li>
+								<li class="menu-item {% if url_name == 'resume' %}current-menu-item{% endif %}">
+									<a href="resume">Resume</a>
+
+								</li>
+								<li class="menu-item {% if url_name == 'work' %}current-menu-item{% endif %}">
+									<a href="work">Works</a>
+
+								</li>
+								<li class="menu-item {% if url_name == 'contact' %}current-menu-item{% endif %}">
+									<a href="contact">Contact</a>
+
+								</li>
+							</ul>
+							{% endwith %}
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</header>
+
+
+
+
+
+        {% block content %}
+
+
+        {% endblock %}
+
+
+
+
+		<footer class="footer">
+			<div class="copy">
+				{% for obj in objs %}
+				<p><strong>E: {{obj.email}}</strong></p>
+				<p><strong>T: +91-{{obj.phone}}</strong></p>
+				{% endfor %}
+			</div>
+			<div class="soc-box">
+				<div class="follow-label">Follow Me</div>
+				<div class="soc">
+					<a target="_blank" href="https://www.pinterest.com/">
+						<span class="icon fab fa-pinterest"></span>
+					</a>
+					<a target="_blank" href="https://www.instagram.com/">
+						<span class="icon fab fa-instagram"></span>
+					</a>
+					<a target="_blank" href="https://dribbble.com/">
+						<span class="icon fab fa-dribbble"></span>
+					</a>
+				</div>
+			</div>
+			<div class="clear"></div>
+		</footer>
+
+		<!-- Lines -->
+		<div class="lines">
+			<div class="line-col"></div>
+			<div class="line-col"></div>
+			<div class="line-col"></div>
+			<div class="line-col"></div>
+			<div class="line-col"></div>
+		</div>
+
+	</div>
+
+	<script src="{% static 'js/min.scripts.js' %}"></script>
+	<script src="{% static 'js/demo-bar.jss' %}"></script>
+
+</body>
+</html>

@@ -1,0 +1,83 @@
+﻿
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block portfolio-name %} {% for obj in objs %} {{obj.name}} {% endfor %} {% endblock %}
+
+
+
+{% block title %} Portfolio {% endblock %}
+
+{% block content %}
+		<!-- Wrapper -->
+		<div class="wrapper">
+
+			<!-- Section Started -->
+			<div class="section started" id="section-started">
+
+				<!-- background -->
+				<div class="video-bg">
+					<div class="video-bg-mask"></div>
+					<div class="video-bg-texture" id="grained_container"></div>
+
+					<!-- slider -->
+					<div class="started-carousel">
+						<div class="swiper-container">
+
+							<div class="swiper-wrapper">
+								{% for slider in sliders%}
+								<div class="swiper-slide first">
+									<div class="main-img" style="background-image: url({{slider.slider_img.url}});"></div>
+								</div>
+								{% endfor %}
+								<!--div class="swiper-slide">
+									<div class="main-img" style="background-image: url({% static 'images/started_image2.jpg' %});"></div>
+								</div>
+								<div class="swiper-slide">
+									<div class="main-img" style="background-image: url({% static 'images/started_image3.jpg' %});"></div>
+								</div>
+								<div class="swiper-slide">
+									<div class="main-img" style="background-image: url({% static 'images/started_image4.jpg' %});"></div>
+								</div-->
+							</div>
+
+
+
+						</div>
+					</div>
+
+				</div>
+
+				<!-- slider navigation -->
+				<div class="swiper-nav">
+					<a class="prev swiper-button-prev fas fa-long-arrow-alt-left"></a>
+					<a class="next swiper-button-next fas fa-long-arrow-alt-right"></a>
+				</div>
+
+				<!-- started content -->
+				<div class="centrize full-width">
+					<div class="vertical-center">
+						<div class="started-content">
+							<h1 class="h-title">
+								{% for obj in objs %}
+								<strong>{{obj.title}}</strong>
+								{% endfor %}
+							</h1>
+
+							<div class="h-subtitle typing-subtitle">
+                                {% for tag in tags %}
+								<p>I develop <strong>{{tag.tag}}</strong></p>
+								{% endfor %}
+
+							</div>
+							<span class="typed-subtitle"></span>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+
+{% endblock %}

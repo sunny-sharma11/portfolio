@@ -1,0 +1,79 @@
+﻿{% extends "base.html" %}
+{% load static %}
+{% block portfolio-name %} Sunny Sharma {% endblock %}
+{% block title %} Works {% endblock %}
+		{% block content %}
+		
+		<!-- Wrapper -->
+		<div class="wrapper">	
+
+			<!-- Section Started -->
+			<div class="section started section-title" id="section-started">
+
+				<!-- background -->
+				<div class="video-bg">
+					<div class="video-bg-mask"></div>
+					<div class="video-bg-texture" id="grained_container"></div>
+				</div>
+
+				<!-- started content -->
+				<div class="centrize full-width">
+					<div class="vertical-center">
+						<div class="started-content">
+							<h1 class="h-title">Works</h1>
+							<div class="h-subtitles">
+								<div class="h-subtitle typing-bread">
+									<p class="breadcrumbs">
+										<a href="/">Home</a> / Works
+									</p>
+								</div>
+								<span class="typed-bread"></span>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- mosue button -->
+				<a href="#" class="mouse_btn" style="display: none;"><span class="icon fas fa-chevron-down"></span></a>
+
+			</div>
+
+			<!-- Works -->
+			<div class="section works" id="section-portfolio">
+				<div class="content">
+				
+					<!-- portfolio filter -->
+
+					<!-- portfolio items -->
+					<div class="box-items portfolio-items">
+{% for portfolio in portfolios%}
+
+						<div class="box-item f-links"> <!-- add class "animate-to-page" if need animated transition to page and delete target="_blank" -->
+							<div class="image">
+								<a href="{{portfolio.link}}" class="has-popup-link hover-animated" target="_blank">
+									<img src="{{portfolio.portfolio_img.url}}" class="wp-post-image" alt="Portfolios">
+									<span class="info circle">
+										<span class="centrize full-width">
+											<span class="vertical-center">
+												<span class="icon fas fa-link"></span>
+												<span class="desc">
+													<span class="category">{{portfolio.category}}</span>
+													<span class="name">{{portfolio.name}}</span>
+												</span>
+											</span>
+										</span>
+									</span>
+								</a>	
+							</div>
+						</div>
+{% endfor %}
+
+					</div>
+
+					<div class="clear"></div>
+				</div>
+			</div>	
+
+		</div>
+		
+		{% endblock %}
